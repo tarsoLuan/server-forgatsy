@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
-const db = require('../database/conn')
+const db = require('../database/connection')
 
 const Book = db.define('Book', {
   id: {
@@ -17,13 +17,21 @@ const Book = db.define('Book', {
     allowNull: false,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT('medium'),
     allowNull: false,
   },
-  imageLink: {
-    type: DataTypes.STRING,
+  imageBlob: {
+    type: DataTypes.TEXT('long'),
     allowNull: false,
   },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  }
   
 })
 

@@ -1,8 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
-const db = require('../database/conn')
-const User = require('../model/user.config.js')
-const Book = require('../model/book.config.js')
+const db = require('../database/connection')
+const User = require('./user.js')
+const Book = require('./book.js')
 
 const Review = db.define('Review', {
   id: {
@@ -11,15 +11,27 @@ const Review = db.define('Review', {
     primaryKey: true,
   },
   userId: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   bookId: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   rating: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  review: {
+    type: DataTypes.TEXT('medium'),
+    allowNull: true,
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
     allowNull: false,
   }
 })

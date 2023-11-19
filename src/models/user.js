@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
-const db = require('../database/conn')
+const db = require('../database/connection')
 
 const User = db.define('User', {
   id: {
@@ -15,19 +15,26 @@ const User = db.define('User', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
     validate: {
       isEmail: true,
     },
   },
-  phone: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   password: {
     type: DataTypes.STRING,
+    allowNull: false
+  },
+  imageBlob: {
+    type: DataTypes.TEXT('long'),
     allowNull: false,
   },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  }
 })
 
 User.sync()
