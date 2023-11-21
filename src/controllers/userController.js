@@ -22,7 +22,6 @@ const addUser = async (req, res) => {
     try {
         const { name, email, password, imageBlob } = req.body;
 
-        // Criação do usuário
         const user = await User.create({
             name: name,
             email: email,
@@ -32,7 +31,6 @@ const addUser = async (req, res) => {
             updatedAt: new Date(),
         });
 
-        // Envie a resposta apenas com os dados relevantes
         res.json({
             id: user.id,
             name: user.name,
